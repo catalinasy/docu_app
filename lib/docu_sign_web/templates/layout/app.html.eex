@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DocuSign</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper primary-dark-color">
+      <a href="/" class="title"> Docu Sign </a>
+      <!-- Droptdown Structure User actions -->
+     
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <%= if signed_in?(@conn) do %>
+         <ul id="user-actions" class="dropdown-content">
+        <li><%= link "Logout", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+      
+        <li> <a href="#">Subir un Documento</a></li>
+        <li><a class="dropdown-trigger" href="#" data-target="user-actions">
+          <%= @current_user.username %>
+          <% end %>
+        </ul>
+        </div>
+    </nav>
+    <main>
+      <p class="alert alert-info" role="alert">
+        <%= get_flash(@conn, :info) %>
+      </p>
+      <p class="aler alert-danger" role="alert">
+        <%= get_flash(@conn, :error) %>
+      </p>
+    <div class="container">
+      <%= render @view_module, @view_template, assigns %>
+    </div>
+
+    </main>
+  </body>
+</html>

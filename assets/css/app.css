@@ -1,0 +1,15 @@
+/* This file is for your main application css. */
+
+@import "./phoenix.css";
+
+
+.title{
+    margin-top: 50px;
+    font-size: 30px;
+    color: black;
+}
+
+.form_container{
+    display: flex;
+    justify-content: center;
+}
